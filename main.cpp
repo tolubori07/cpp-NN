@@ -1,17 +1,23 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <cmath>
+#include <stdio.h>
+#include <stdlib.h>
 
 static double sigmoid(double x) {
-    // TODO: return 1 / (1 + e^-x), without overflowing for large |x|.
-    (void)x;
-    return 0.0;
+  if (x < 0) {
+    return std::exp(x) / (1 + std::exp(x));
+  }
+  return 1 / (1 + std::exp(-x));
+  return 0.0;
 }
 
-int main() {
-    string line;
-    while (getline(cin, line)) {
-        if (line.find_first_not_of(" \t\r") == string::npos) continue;
-        printf("%.4f\n", sigmoid(atof(line.c_str())));
-    }
-    return 0;
+int main(void) {
+  char line[512];
+  while (fgets(line, sizeof line, stdin)) {
+    char *end;
+    double x = strtod(line, &end);
+    if (end == line)
+      continue; /* blank line */
+    printf("%.4f\n", sigmoid(x));
+  }
+  return 0;
 }
