@@ -34,8 +34,8 @@ static double neuron(const vector<double> &x, const vector<double> &w,
   // TODO: z = w . x + b (add the products left to right), then return
   // sigmoid(z).
   double z = b;
-  for (int count = 0; count < x.size(); count++) {
-    z += x[count] * w[count];
+  for (int i = 0; i < x.size(); i++) {
+    z += x[i] * w[i];
   }
   return sigmoid(z);
 }
